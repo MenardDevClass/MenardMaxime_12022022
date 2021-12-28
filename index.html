@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Les petits plats</title>
+
+    <link rel="icon" type="image/png" href="./img/icon_chef.png">
+    <link rel='stylesheet' href='./css/style.css'>
+    <script src="https://kit.fontawesome.com/e70494c283.js" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <!--HEADER-->
+    <header>
+        <img class="logo" src="./img/logo.svg" alt="Les petits plats" />
+        <!--Search Bar -->
+        <form id='searchBar'>
+            <label for="searchBarInput"></label>
+            <input type="search" class="searchBarInput" id="searchBarInput"
+                placeholder="Rechercher un ingrédient, appareil, ustensile ou une recette"
+                aria-label="Search through site content">
+                <i class="fas fa-search" role="button"></i>
+        </form>
+    
+        <!-- Tags -->
+        <nav id="tagsBadges">
+                <div id="tag-ingredients"></div>
+                <div id="tag-appliance"></div>
+                <div id="tag-ustensils"></div>
+        </nav>
+        
+        <!-- Filters -->
+        <div id="filters" class="type-search"></div>
+
+        <!--Message -->
+        <div id="message"></div>
+    </header>
+
+    <!--RECiPES-->
+    <main id="recipes"></main>
+   
+    <script src="js/recipes.js"></script>
+    <script src="js/Filters.js"></script>
+    <script src="js/Ingredient.js"></script>
+    <script src="js/Appliance.js"></script>
+    <script src="js/Ustensils.js"></script>
+    <script src="js/Search.js"></script>
+    <script src="js/Recipe.js"></script>
+    <script src="js/List.js"></script>
+    <script src="js/index.js"></script>
+   
+</body>
+</html>

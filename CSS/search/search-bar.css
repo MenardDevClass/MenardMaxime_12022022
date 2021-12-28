@@ -28,3 +28,35 @@
     width: 100%;
     
 }
+
+.searchBarInput:focus {
+    border: 2px solid #00000091;
+    transition: border 0.2s;
+}
+
+#message {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+    font-size: 1.4em;
+    width: 80%;
+    text-align: center;
+    margin: auto;
+}
+
+#message span {
+    color: #ed6454;
+}
+
+/* responsive */
+@media screen and (min-width: 900px) {
+    #searchBar>i {
+        top: 2.2rem;
+    }
+
+    .searchBarInput {
+        height: 4.3125rem;
+    }
+}
+

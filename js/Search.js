@@ -33,8 +33,16 @@ listen()
         {
             this.showMessage();
         }
-        
-    }
+
+        if(this.searchValue == '')
+        {
+            list.filtered = list.all;
+            this.hideMessage();
+        }
+
+    });
 }
+
+//  TODO: Recipe Valisation!
 
 }

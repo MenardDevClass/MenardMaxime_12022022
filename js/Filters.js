@@ -100,7 +100,76 @@ class Filters
             })
         })
     }
-// TODO: FAIRE LE  Listener Tags : fermer le tag selectionné par la croix,  Dropdown: ouverture/fermeture,
- //Dropdown: fermeture, Affiche HTML : liste des datas dans le dropdown, Affiche HTML : les dropdowns
+  //-- Listener Tags : fermer le tag selectionné par la croix
+  listenForUnselect()
+  {
+      document.querySelectorAll(`.closed-${this.type}`).forEach(tag =>
+      {
+          tag.addEventListener('click', (e) =>
+          {
+              let tag = e.target.parentNode.getAttribute('data-filter');
+              this.selected.delete(tag);
+              this.displayTags();
 
- 
+              if(this.selected.size === 0)
+              {
+                  list.filtered = list.all;
+                  list.build(list.all)
+              } else {
+                  list.filtered = this.filter(list.all);
+                  list.build(list.filtered) 
+              }
+          })
+      })
+  } 
+
+
+  //-- Dropdown: ouverture/fermeture
+  listenToDropdown()
+  {
+      this.openDropdown();
+      this.closeDropdown();
+  }
+
+
+  //-- Dropdown: fermeture
+  openDropdown()
+  {
+      document.getElementById(`dropdown-${this.type}`).addEventListener('click', () => 
+      {
+          document.getElementById(`dropdown-${this.type}`).style.width = "26.5rem";           
+          document.getElementById(`menu-${this.type}`).style.display = "block"; 
+          document.getElementById(`menu-${this.type}`).style.width= "26.5rem";
+      });
+  }
+
+
+  //-- Affiche HTML : liste des datas dans le dropdown
+  render()
+  {
+      let html = `<ul class="listUl-${this.type}"> `;
+      this.filtered.forEach((tag)=>
+      {
+          html += `<li class="list-${this.type}" data-filter="${tag}">${tag}</li>`
+      })
+      html += '</ul>'
+      document.getElementById(`${this.type}-example`).innerHTML = html;  
+  }
+
+
+  // -- Affiche HTML : les dropdowns
+  renderDropdown()
+  {
+      document.getElementById('filters').innerHTML +=
+      `<div class="${this.type} dropdown-wrapper" data-type="${this.type}">
+          <button id="dropdown-${this.type}">${this.type} <i class="fas fa-chevron-down" role="button"></i></button>
+          <div id="menu-${this.type}" class="menu-${this.type}">
+              <label for="input-${this.type}"></label>
+              <input type="search" class="input-${this.type}" id="${this.type}" aria-label="Search through ingredients" placeholder="Rechercher un ${this.type}">
+              <div>
+              <i class="fas fa-chevron-up" id="${this.type}-close" role="button"></i>
+              <div id="${this.type}-example"></div>
+          </div>
+      </div>`
+  }
+}

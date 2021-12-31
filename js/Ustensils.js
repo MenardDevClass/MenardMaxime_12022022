@@ -18,3 +18,30 @@ class FilterByUstensils extends Filters
         return list;
 
     }
+
+       //-- Filtre : appareils dans les recettes avec l'ustensil sélectionné dropdown
+       filter(recipes)
+       {
+           
+           return recipes.filter(recipe => 
+           {
+               let isSelectable = false;
+               let count = 0;
+   
+               this.selected.forEach(ust => 
+               {
+                   if(recipe.ustensils.includes(ust))
+                   {
+                       count++
+                   }  
+               })
+   
+               if(count == this.selected.size)
+               {
+                   isSelectable = true;
+               }
+               return isSelectable;
+           })  
+       }
+   }
+   
